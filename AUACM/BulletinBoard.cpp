@@ -8,7 +8,7 @@ int main() {
 	while(scanf(" %d", &n)!=EOF && n) {
 		scanf(" %d %d", &w, &h);
 		
-		// Save the coordinates where a post beggins and ends on each row
+		// Save the coordinates where a poster begins and ends on each row
 		vector < pair<int, bool> > posterRow[50005];
 		
 		for(int i=0; i<n; ++i) {
@@ -46,7 +46,7 @@ int main() {
 					areaCovered += posterRow[i][j].first - posterRow[i][j-1].first;
 				}
 				
-				// The depth is increased if this coordinate is a beggin and decreased if it's an end
+				// The depth is increased if this coordinate is a begin and decreased if it's an end
 				if(posterRow[i][j].second > 0)
 					depth += 1;
 				else
@@ -59,7 +59,7 @@ int main() {
 		// The area not covered it the total area minus the area covered 
 		printf("%d ", h*w - areaCovered);
 		
-		// So far there i no areas with the max depth
+		// Initialize the area with maximum depth as 0
 		int maxDepthAreas = 0;
 		// Go throw each row
 		for(int i=0; i<50005; ++i) {
@@ -73,7 +73,7 @@ int main() {
 				if(depth == mdepth)
 					maxDepthAreas += posterRow[i][j].first - posterRow[i][j-1].first;
 				
-				// The depth is increased if this coordinate is a beggin and decreased if it's an end
+				// The depth is increased if this coordinate is a begin and decreased if it's an end
 				if(posterRow[i][j].second > 0)
 					depth += 1;
 				else
